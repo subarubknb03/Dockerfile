@@ -1,0 +1,16 @@
+version: '3'
+services:
+  torch_gpu:
+    build: .
+    container_name: torch_gpu_env
+    tty: true
+    ports:
+      - '8888:8888'
+    volumes:
+      - './workspace:/mnt/workspace'
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              capabilities: [gpu]
